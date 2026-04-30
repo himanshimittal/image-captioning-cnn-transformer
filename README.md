@@ -1,200 +1,81 @@
-# Variational Autoencoder (VAE) for Image Reconstruction + Deep Learning Research
+# Image Captioning using CNN and Transformer Architecture
 
-## 📌 Overview
+## 📄 Research Overview
 
-This repository contains an implementation of a **Variational Autoencoder (VAE)** built using PyTorch for image reconstruction on the CIFAR-10 dataset, along with conceptual grounding inspired by research in **computer vision and deep learning architectures**.
+This project focuses on the problem of automatic image captioning, which lies at the intersection of computer vision and natural language processing. The objective is to generate meaningful textual descriptions for images by understanding visual content and modeling sequential language.
 
-Additionally, this work is aligned with research on **image understanding and generation**, including concepts explored in CNN-based feature extraction and Transformer-based modeling.
-
----
-
-## 🚀 Features
-
-* Variational Autoencoder (VAE) implementation from scratch
-* Encoder-Decoder architecture using convolutional layers
-* Latent space representation learning
-* Image reconstruction visualization
-* Training on CIFAR-10 dataset
-* GPU support (CUDA if available)
+The proposed approach combines a Convolutional Neural Network (CNN) for feature extraction with a Transformer-based architecture for sequence generation. A pre-trained VGG16 model is used to extract image features, while the Transformer decoder generates context-aware captions using attention mechanisms.
 
 ---
 
-## 🧠 Model Architecture
+## 💻 Code Overview
 
-### 🔹 Encoder
+The code implements an end-to-end image captioning pipeline:
 
-* Convolutional layers for feature extraction
-* Fully connected layers to generate:
-
-  * Mean (`μ`)
-  * Log variance (`log σ²`)
-
-### 🔹 Latent Space
-
-* Reparameterization trick:
-
-  ```
-  z = μ + σ * ε
-  ```
-
-* Enables stochastic sampling while keeping backpropagation valid
-
-### 🔹 Decoder
-
-* Fully connected + transposed convolution layers
-* Reconstructs image from latent vector
+* Image feature extraction using a pre-trained VGG16 model
+* Text preprocessing including tokenization and sequence padding
+* Transformer-based decoder for caption generation
+* Training using paired image-caption data from the Flickr8k dataset
+* Caption prediction for new input images
 
 ---
 
-## 📉 Loss Function
+## ⚙️ Setup Instructions
 
-The VAE uses a combination of:
+### 1. Install Dependencies
 
-1. **Reconstruction Loss (MSE/BCE)**
-2. **KL Divergence Loss**
-
-```
-Loss = Reconstruction Loss + KL Divergence
+```bash id="y3v7zz"
+pip install tensorflow keras numpy matplotlib
 ```
 
-* Reconstruction ensures output resembles input
-* KL divergence regularizes latent space
+### 2. Prepare Dataset
 
----
+* Download and place the Flickr8k dataset in the project directory
+* Ensure image paths and caption files are correctly configured
 
-## 📊 Dataset
+### 3. Train the Model
 
-* **CIFAR-10**
-
-  * 60,000 images (32×32 RGB)
-  * 10 classes
-
-> Note: When running on Kaggle, dataset is loaded from local input path instead of downloading.
-
----
-
-## 🖼️ Results
-
-### Reconstruction Visualization
-
-The model reconstructs input images after encoding and decoding:
-
-* Top row → Original images
-* Bottom row → Reconstructed images
-
-```python
-def plot_reconstruction(vae, data_loader):
-    vae.eval()
-    with torch.no_grad():
-        x, _ = next(iter(data_loader))
-        x = x.to(device)
-        reconstructed, _, _ = vae(x)
-
-        x = x.cpu()
-        reconstructed = reconstructed.cpu()
-
-        fig, axes = plt.subplots(2, 8, figsize=(16, 4))
-        for i in range(8):
-            axes[0, i].imshow(x[i].permute(1, 2, 0))
-            axes[0, i].axis('off')
-
-            axes[1, i].imshow(reconstructed[i].permute(1, 2, 0))
-            axes[1, i].axis('off')
-
-        plt.show()
-```
-
----
-
-## ⚙️ Training Details
-
-| Parameter     | Value |
-| ------------- | ----- |
-| Epochs        | 50    |
-| Batch Size    | 32    |
-| Learning Rate | 0.001 |
-| Optimizer     | Adam  |
-| Latent Dim    | 64    |
-
----
-
-## 📚 Research Connection
-
-This implementation connects with research in:
-
-### 🔹 Computer Vision + NLP Integration
-
-As explored in the research paper:
-
-> *"Image Captioning using CNN and Transformers"*
-
-Key insights:
-
-* CNNs (e.g., VGG16) extract visual features
-* Transformers handle sequence generation
-* Attention mechanisms improve contextual understanding
-
-### 🔹 Relevance to this Project
-
-* VAE learns **compressed latent representations**
-* Similar to feature extraction in CNNs
-* Can be extended for:
-
-  * Image generation
-  * Feature learning for captioning systems
-  * Multimodal AI systems
-
----
-
-## 🔮 Future Improvements
-
-* Replace MSE with Binary Cross Entropy (better for images)
-* Use deeper convolutional architecture
-* Visualize latent space using PCA / t-SNE
-* Extend to Conditional VAE (CVAE)
-* Integrate with caption generation models
-
----
-
-## 🛠️ How to Run
-
-### 1. Install dependencies
-
-```bash
-pip install torch torchvision matplotlib
-```
-
-### 2. Run training
-
-```bash
+```bash id="fq6qoe"
 python train.py
 ```
 
-### 3. Visualize results
+### 4. Generate Captions
 
-```bash
-python visualize.py
+```bash id="l2z4w2"
+python predict.py
 ```
----
-
-## 👩‍💻 Author
-
-**Himanshi**
 
 ---
 
-## ⭐ Acknowledgements
+## 📊 Results
 
-* CIFAR-10 Dataset
-* PyTorch
-* Research inspiration from CNN + Transformer architectures for image understanding
+The model is capable of generating relevant and coherent captions for input images by capturing both visual features and contextual relationships in text.
+
+**Example:**
+
+* Ground Truth:
+  A dog is running through a grassy field
+
+* Generated Caption:
+  A dog runs across the grass
+
+Evaluation is performed using BLEU scores to measure the quality of generated captions.
 
 ---
 
-## 📌 Conclusion
+## 📌 Notes
 
-This project demonstrates how generative models like VAE can:
+### Limitations
 
-* Learn meaningful latent representations
-* Reconstruct images effectively
-* Serve as a foundation for advanced tasks like image generation and multimodal AI
+* Performance is limited by the size of the Flickr8k dataset
+* Captions may be generic for complex scenes
+* Training requires moderate computational resources
+
+### Future Work
+
+* Use larger datasets such as MS COCO
+* Improve caption diversity and accuracy
+* Incorporate advanced architectures such as Vision Transformers
+* Apply beam search for better sequence generation
+
+---
