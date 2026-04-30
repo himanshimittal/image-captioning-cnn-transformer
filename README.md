@@ -99,9 +99,7 @@ Enhance VAE with better reconstruction loss (e.g., BCE)
 Combine VAE with captioning for generative tasks
 
 **👩‍💻 Authors**
-Diya Nanda
-Hasika 
-Himanshi Mittal
+Diya Nanda, Hasika, Himanshi Mittal
 
 **📜 License**
 This project is for academic and research purposes.
