@@ -1,6 +1,6 @@
-#**📌 Image Captioning using CNN and Transformers + VAE Implementation**
+#📌 Image Captioning using CNN and Transformers + VAE Implementation**
 
-##**📄 Research Overview**<br>
+##📄 Research Overview<br>
 This project is based on our research paper titled:<br>
 **“Image Captioning using CNN and Transformers”**<br>
 The work focuses on generating **contextually meaningful captions from images** by combining:
@@ -8,14 +8,14 @@ The work focuses on generating **contextually meaningful captions from images** 
 - Transformer-based architecture for sequence generation<br>
 We use VGG16 as the encoder and a Transformer decoder with attention mechanisms to generate captions. The model is trained on the Flickr8k dataset, achieving promising results in generating fluent and coherent captions .
 
-##**💡 Key Contributions**
+##💡 Key Contributions
 - Hybrid CNN + Transformer architecture
 - Use of multi-head attention for better context understanding
 - Implementation of image feature extraction using VGG16
 - Evaluation using BLEU score metrics
 - Additional implementation of a Variational Autoencoder (VAE) for image reconstruction
 
-##**🧠 Code Overview**<br>
+##🧠 Code Overview<br>
 This repository includes:
 
 **1. 📷 Image Captioning (Research Work)**
@@ -30,7 +30,7 @@ Implemented using PyTorch for:
 - Latent representation learning
 - Image reconstruction (CIFAR-10 dataset)
 
-##**🏗️ VAE Architecture**<br>
+##🏗️ VAE Architecture<br>
 **Encoder**
 - Conv layers → Feature extraction
 - Fully connected layers → Latent space
@@ -49,14 +49,14 @@ z = μ + ε * σ
 - Reconstruction Loss (MSE)
 - KL Divergence
 
-##**⚙️ Tech Stack**
+##⚙️ Tech Stack
 - Python
 - PyTorch
 - Torchvision
 - NumPy
 - Matplotlib
 
-##**📂 Dataset**<br>
+##📂 Dataset<br>
 **Research Work:**
 - **Flickr8k Dataset**<br>
   - 8000 images
@@ -67,7 +67,7 @@ z = μ + ε * σ
   - 32x32 RGB images
   - 10 classes
 
-##**🚀 How to Run**
+##🚀 How to Run
 1. **Clone the repository**<br>
 git clone [https://github.com/himanshimittal/image-captioning-cnn-transformer](https://github.com/himanshimittal/image-captioning-cnn-transformer)<br>
 cd your-repo
@@ -76,35 +76,35 @@ pip install torch torchvision matplotlib
 3. **Run the VAE model**<br>
 python vae.py
 
-##**📊 Output**
+##📊 Output
 - Training loss per epoch
 - Original vs Reconstructed images
 
-##**📈 Results (Research Work)**
+##📈 Results (Research Work)
 - BLEU Scores:
   - BLEU-1: 0.72
   - BLEU-2: 0.61
   - BLEU-3: 0.52
   - BLEU-4: 0.46
 
-##**🧪 Sample Output (VAE)**
+##🧪 Sample Output (VAE)
 - Input: CIFAR-10 images
 - Output: Reconstructed images using latent space
 
-##**📌 Future Work**
+##📌 Future Work
 - Improve caption quality using larger datasets (MS COCO)
 - Optimize transformer architecture
 - Enhance VAE with better reconstruction loss (e.g., BCE)
 - Combine VAE with captioning for generative tasks
 
-##**👩‍💻 Authors**
+##👩‍💻 Authors
 - Diya Nanda<br>
 - Hasika<br>
 - Himanshi Mittal
 
-##**📜 License**
+##📜 License
 This project is for academic and research purposes.
 
-##**⭐ Acknowledgements**
+##⭐ Acknowledgements
 - Flickr8k Dataset
 - PyTorch Community
