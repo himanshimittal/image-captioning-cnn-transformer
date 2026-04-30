@@ -1,6 +1,6 @@
 **📌 Image Captioning using CNN and Transformers + VAE Implementation**
 
-**📄 Research Overview**
+**📄 Research Overview**<br>
 This project is based on our research paper titled:
 “Image Captioning using CNN and Transformers”
 The work focuses on generating contextually meaningful captions from images by combining:
