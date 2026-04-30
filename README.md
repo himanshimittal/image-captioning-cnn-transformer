@@ -18,13 +18,13 @@ Additional implementation of a Variational Autoencoder (VAE) for image reconstru
 **🧠 Code Overview**<br>
 This repository includes:
 
-1. 📷 Image Captioning (Research Work)
+1. 📷 Image Captioning (Research Work)<br>
 CNN (VGG16) for feature extraction
 Transformer-based encoder-decoder
 Multi-head attention mechanism
 Caption generation pipeline
 
-3. 🔁 Variational Autoencoder (VAE)
+3. 🔁 Variational Autoencoder (VAE)<br>
 Implemented using PyTorch for:
 Image compression
 Latent representation learning
